@@ -1,0 +1,22 @@
+develop & master branch
+
+DELETE feature branches (local & remote):
+git push origin --delete <branch>
+git branch -d <branch>
+
+SQUASHing:
+- git pull on develop
+- git pull on feature-branch
+- sync if needed via rebase/merge, if not conflicts in PR it's fine
+- from feature-branch: 
+git rebase --interactive HEAD~4 (total number of commits is 4 here)
+- reword first, squash rest :wq (or pick if no need to reword)
+- second screen: reword it :wq
+- third screen (comes up if reworded rather than picked) should show reworded commit first and other picked commits, just :wq
+- git push origin feature-branch --force
+
+CHERRY PICK from develop -> master:
+git pull on develop
+git pull on master
+on master: git cherry-pick <some-develop-commit-hash>
+
